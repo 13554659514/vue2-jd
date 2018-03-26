@@ -12,7 +12,6 @@ import store from '@/store'
 import FastClick from 'fastclick'
 import '@/utils/directives'
 import '@/utils/filters'
-import VueScroller from 'vue-scroller'
 import VeeValidate from 'vee-validate';
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {
@@ -21,7 +20,6 @@ if ('addEventListener' in document) {
 }
 
 Vue.use(MintUI)
-Vue.use(VueScroller)
 Vue.use(VeeValidate);
 router.beforeEach((to,from,next)=>{
     next();

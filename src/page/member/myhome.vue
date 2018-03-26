@@ -222,7 +222,7 @@
 <template>
   <div>
     <div class="content">
-      <load-more style="width:100%;" @loadMore="infiniteCallback" :commad="commad" :param="recommendParam" :topMethod="onRefreshCallback"
+      <load-more @translate-change="translateChange" style="width:100%;" @loadMore="infiniteCallback" :commad="commad" :param="recommendParam" :topMethod="onRefreshCallback"
         :loadMoreIconVisible="false" ref="recommendLoadmore">
         <span style="-webkit-transform: scale(.9)!important;transform: scale(.9)!important;position:  absolute;top: 45%;left: 45%;font-size:  12px;font-weight: normal;text-shadow:  none;box-shadow:  none;"
           slot="refresh-spinner">更新中...</span>
@@ -244,15 +244,15 @@
           </div>
         </div>
         <div class="my-order">
-          <div class="order-item" @click="$router.push('/orderList/1')">
+          <div class="order-item" @click.stop.prevent="!handlerEvent ? $router.push('/orderList/1'):false">
             <img src="~jd/images/paymenticon.png" alt="">
             <span>待付款</span>
           </div>
-          <div class="order-item" @click="$router.push('/orderList/2')">
+          <div class="order-item" @click.stop.prevent="!handlerEvent ? $router.push('/orderList/2'):false">
             <img src="~jd/images/received.png" alt="">
             <span>待收货</span>
           </div>
-          <div class="order-item" @click="$router.push('/orderList/0')">
+          <div class="order-item" @click.stop.prevent="!handlerEvent ? $router.push('/orderList/0'):false">
             <img src="~jd/images/evaluated.png" alt="">
             <span>待评价</span>
           </div>
@@ -260,7 +260,7 @@
             <img src="~jd/images/Aftermarket.png" alt="">
             <span>退换/售后</span>
           </div>
-          <div class="order-item myorder" @click="$router.push('/orderList/0')">
+          <div class="order-item myorder" @click.stop.prevent="!handlerEvent ? $router.push('/orderList/0'):false">
             <img src="~jd/images/myordericon.png" alt="">
             <span>我的订单</span>
           </div>
@@ -328,6 +328,7 @@
         userData: {
           userInfo: null
         },
+        handlerEvent: false,
         commad: getRecommend,
         recommendParam: {
           Type: 'recommend',
@@ -374,6 +375,9 @@
             this.cmsData.recommendData.push(i)
           })
         }
+      },
+      translateChange(y){ //监听下拉的阈值
+        this.handlerEvent = y>8 ? true : false;
       },
       async initData() {
         if (!this.userInfo) {

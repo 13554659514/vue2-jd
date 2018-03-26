@@ -78,19 +78,19 @@
     <div style="height: 1.255rem;"></div>
     <div class="categoryBody">
       <!-- 分类列表 -->
-      <div class="rootList">
-        <scroller ref="rootScroll" width="20%" height="85%" style="margin-top:1.25rem">
+      <div class="rootList" style="width:20%;">
+        <load-more ref="rootScroll" style="height:85%;">
           <ul class="rootListcontent">
             <li :class="selectedRoot === item.Id ? 'active' : ''" @click="rootScrollTo(item)" v-for="(item,index) in categoryBody.categoryRoot"
               v-if="categoryBody.categoryRoot!=null">{{item.name}}</li>
           </ul>
-        </scroller>
+        </load-more>
       </div>
       <!-- 分类列表 -->
 
       <!-- 分类下的产品目录 -->
-      <div class="jd-category-content">
-        <scroller width="80%" height="85%" style="left:initial;right:0;margin-top:1.25rem">
+      <div class="jd-category-content" style="width: 85%;">
+        <load-more  :loadMoreIconVisible="false" ref="loadMore" style="width: 100%;height:85%;left:initial;right:0;">
           <div class="jd-categoryContent">
             <div class="categoryContentBox" v-if="categoryBody.categoryList!=null && categoryBody.categoryList.length>0">
               <div class="categorytItem" v-for="(item,index) in categoryBody.categoryList" :key="index" @click="$router.push({path: '/searchRusult',query: {categoryId:item.Id}})">
@@ -102,7 +102,7 @@
               <p>暂无数据</p>
             </div>
           </div>
-        </scroller>
+        </load-more>
       </div>
       <!-- 分类下的产品目录 -->
     </div>
@@ -113,6 +113,7 @@
 <script>
   import FooterView from 'component/footer/footerView';
   import SearchBar from 'page/shop/searchBar';
+  import LoadMore from 'common/loadMore';
   import ErrorImage from 'assets/common/images/404.png';
   import {
     mapGetters,
@@ -134,7 +135,8 @@
 
     components: {
       FooterView,
-      SearchBar
+      SearchBar,
+      LoadMore
     },
 
     computed: {

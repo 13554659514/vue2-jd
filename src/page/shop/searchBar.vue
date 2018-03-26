@@ -321,7 +321,7 @@
           </div>
           <span @click="()=>{Keyword='';searchVisiblie=false}">取消</span>
         </div>
-        <scroller v-show="Keyword.length<=0" width="100%" height="100%" style="margin-top:1.2rem;background:#fff;">
+        <load-more v-show="Keyword.length<=0" style="width:100%;height:100%;background:#fff;" >
           <div class="search-hot">
             <p>热搜</p>
             <ul class="search-hot-list">
@@ -338,9 +338,9 @@
               <span>清空历史搜索</span>
             </div>
           </div>
-        </scroller>
+        </load-more>
         <div class="search-rusult-content" v-show="Keyword.length>0">
-          <scroller width="100%" height="100%" style="margin-top:1.2rem;background:#fff;">
+          <load-more style="background:#fff;width: 100%;height: 100%;">
             <div class="search-rusult-goods">
               <i></i>
               <span>搜素 {{Keyword}}...</span>
@@ -352,7 +352,7 @@
             </ul>
             <p style="text-align:center;text-align: left;padding: 10px;color: #81838e;font-size: 13px;border-bottom: 1px solid #e1e1e1;"
               v-else>暂无数据...</p>
-          </scroller>
+          </load-more>
         </div>
       </div>
     </mt-popup>
@@ -367,6 +367,7 @@
     getLocalStorage,
     setLocalStorage
   } from '@/utils/mixin'
+  import LoadMore from 'common/loadMore';
   export default {
     data() {
       return {
@@ -399,7 +400,9 @@
         }
       }
     },
-    components: {},
+    components: {
+      LoadMore
+    },
 
     computed: {},
 
