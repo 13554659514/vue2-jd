@@ -11,7 +11,7 @@ import {
 } from '@/utils/mixin';
 class Http {
   constructor(){
-    this.Domain = 'http://awei.fun:3333';
+    this.Domain = 'https://awei.fun:3032';
   }
   require(options) {
     if (!options.api) throw new Error('api 不能为空');
@@ -30,7 +30,7 @@ class Http {
         return axios({
             method: options.methods,
             url: options.api,
-            baseURL: 'http://awei.fun:3333',  
+            baseURL: this.Domain,  
             // `withCredentials` indicates whether or not cross-site Access-Control requests
             // should be made using credentials
             // withCredentials: true, // default

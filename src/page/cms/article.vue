@@ -282,7 +282,7 @@
           })
         }
       },
-      switchTabs(Id) {
+      switchTabs(Id) {0
         this.active = Id;
         switch (String(this.active)) {
           case 'tab-container1': //精选
