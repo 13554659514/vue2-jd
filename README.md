@@ -17,9 +17,9 @@ __本项目纯属个人瞎弄，仅供学习和参考，禁止用于非法用途
 
 # 演示
 
-[查看demo请戳这里](https://awei.fun/shop/mobile)（请用chrome手机模式预览）
+[查看demo请戳这里](https://awei.fun/public/vue2-jd/mobile)（请用chrome手机模式预览）
 
-[后台管理系统请戳这里](https://awei.fun/shop/admin)（请用chrome手机模式预览）
+[后台管理系统请戳这里](https://awei.fun/public/vue2-jd/admin)（请用chrome手机模式预览）
 
 ### 移动端扫描下方二维码
 
